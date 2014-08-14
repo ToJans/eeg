@@ -74,15 +74,18 @@
     </style>
     <script type="text/javascript">
 
-        var links = ["home", "U7", "U7result", "U8", "U8result", "U9", "U9result"];
-        //var links = ["home","U11","U11result","U12","U12result","U13","U13result"];
+        var linksVoormiddag = ["home", "U7", "U7result", "U8", "U8result", "U9", "U9result"];
+        var linksNamiddag = ["home","U11","U11result","U12","U12result","U13","U13result"];
+
+        var links = linksVoormiddag;
 
         function cycle() {
             var x = links.shift();
             window.location.hash = x;
             links.push(x);
-            setInterval(cycle, 7*1000);
+            setTimeout(cycle,7*1000)
         }
+
     </script>
 </head>
 <body>
