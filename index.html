@@ -85,6 +85,15 @@
             links.push(x);
             setTimeout(cycle,7*1000)
         }
+
+        function reload() {
+            window.location.reload();
+        }
+
+        if (window.location.search === "?cycle") {
+            cycle();
+            setTimeout(reload, links.length * 7 * 1000 - 500);
+        }
       
     </script>
 </head>
