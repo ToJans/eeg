@@ -20,13 +20,17 @@
             color: white;
             height:10em;
         }
-        header div {
+        header div.header-content {
             display: inline-block;
             width: 36em;
             text-align:left;
         }
         header img {
             float:left;
+            width:141px;
+            height:auto;
+            background-color:white;
+            border-radius: 70px;
         }
         header h1 {
             padding-left:5em;
@@ -34,6 +38,18 @@
         header small {
             display:block;
         }
+        header .site-by {
+            display: block;
+            position: relative;
+            top:-0.5em;
+            padding-left: 160px;
+            font-size: smaller;
+        }
+
+        header .site-by a, header.site-by:visited {
+            color:white;
+        }
+
         menu {
             background-color:white;
             width : 100%;
@@ -66,16 +82,28 @@
            margin-bottom:1em;
         }
 
-        thead {
+        th {
             background-color:blue;
             color:white;
         }
 
+        textarea.markdown {
+            display: none;
+        }
+
+        td, th {
+            padding-right: 0.5em;
+            padding-left: 0.5em;
+            padding-bottom: 0.5em;
+            padding-top: 0.5em;
+        }
+
     </style>
+    <script type="text/javascript" src="js/micromarkdown.js"></script>
     <script type="text/javascript">
 
         var linksVoormiddag = ["home", "fotos", "U7", "U7result", "fotos", "U8", "U8result", "fotos", "U9", "U9result", "fotos"];
-        var linksNamiddag   = ["home", "fotos", "U11", "U11result", "fotos", "U12", "U12result", "fotos", "U13", "U13result", "fotos"];
+        var linksNamiddag   = ["home", "fotos", "U10", "U10result", "U11", "U11result", "fotos", "U12", "U12result", "fotos", "U13", "U13result", "fotos"];
 
         var links = linksNamiddag;
 
@@ -95,25 +123,39 @@
         }
         setTimeout(reload, links.length * 7 * 1000 - 500);
 
+        document.addEventListener("DOMContentLoaded", function(event) { 
+            var markdowns = document.querySelectorAll('.markdown');
+            for (var i=0;i<markdowns.length;i++) {
+                var markdown = markdowns[i].value;
+                var html = micromarkdown.parse(markdown);
+                var targetId = markdowns[i].attributes.getNamedItem("data-target-id").value;
+                var target = document.getElementById(targetId)
+                target.innerHTML = html;
+            }
+          });
+
     </script>
 </head>
 <body>
     <header>
-        <div>
+        <div class="header-content">
             <a href="http://www.eendrachtelenegrotenberge.be" target="_blank">
-                <img border="0" height="200" src="https://sites.google.com/site/voetbaleg/_/rsrc/1407504235530/home/EEG.png?height=200&amp;width=141" width="141">
+                <img border="0" height="200" src="http://static.wixstatic.com/media/a48d02_cca416b75cfb46aaa14b9bf165f9bbd7.png_srb_p_148_148_75_22_0.50_1.20_0.00_png_srb"  >
             </a>
-            <h1>Toernooi Gert Duprez 2014<small>Live - http://tojans.me/eeg</small></h1>
+            <h1>Toernooi Gert Duprez 2015<small>Live - http://tojans.me/eeg</small></h1>
             <menu>
                 <a href="#home">Home</a>
                 <a href="#U7">U7</a>
                 <a href="#U8">U8</a>
                 <a href="#U9">U9</a>
+                <a href="#U10">U10</a>
                 <a href="#U11">U11</a>
                 <a href="#U12">U12</a>
                 <a href="#U13">U13</a>
                 <a href="#fotos">Fotos</a>
+                <a href="./2014.html">2014</a>
             </menu>
+            <div class="site-by">site by <a href="http://arealities.com/?eeg">Arealities.com</a> - virtual worlds, real sales</div>
         </div>
     </header>
     <div class="articles">
@@ -136,395 +178,321 @@
         <article>
             <a name="U7">&nbsp;</a>
             <h1>U7<small> - <a href="#U7result">Toon resultaat</a></small></h1>
-            <table>
-                <thead>
-                    <tr>
-                        <td>Uur</td>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                        <td>Terrein</td>
-                        <td>Resultaat</td>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr><td>9u00</td><td>FC Zegelsem    </td><td>SK Munkzwalm       </td><td>B1</td><td>3 - 6</td></tr>
-                    <tr><td>9u00</td><td>Eendracht EG   </td><td>KFC Gavere-Asper   </td><td>B3</td><td>0 - 14</td></tr>
-                    <tr><td>9u00</td><td>KVV Windeke    </td><td>FC Kluisbergen     </td><td>B4</td><td>6 - 4</td></tr>
-                    <tr><td colspan="5"><hr /></td></tr>
-                    <tr><td>10u00</td><td>SK Munkzwalm    </td><td>Olsa Brakel      </td><td>B2</td><td>1 - 4</td></tr>
-                    <tr><td>10u00</td><td>Eendracht EG    </td><td>KVV Windeke      </td><td>B3</td><td>2 - 11</td></tr>
-                    <tr><td>10u00</td><td>KFC Gavere-Asper</td><td>FC Kluisbergen   </td><td>B4</td><td>10 - 1</td></tr>
-                    <tr><td colspan="5"><hr /></td></tr>
-                    <tr><td>11u00</td><td>FC Zegelsem     </td><td>Olsa Brakel      </td><td>B1</td><td>4 - 6</td></tr>
-                    <tr><td>11u00</td><td>Eendracht EG    </td><td>FC Kluisbergen   </td><td>B3</td><td>0 - 10</td></tr>
-                    <tr><td>11u00</td><td>KFC Gavere-Asper</td><td>KVV Windeke      </td><td>B4</td><td>8 - 2</td></tr>
-                    <tr><td colspan="5"><hr /></td></tr>
-                    <tr><td colspan="5">Finale</td></tr>
-                    <tr><td>12u00</td><td>Olsa Brakel        </td><td>KFC Gavere-Asper    </td><td>B1</td><td>1 - 2</td></tr>
-                    <tr><td>12u00</td><td>SK Munkzwalm       </td><td>KVV Windeke         </td><td>B2</td><td>4 - 2</td></tr>
-                    <tr><td>12u00</td><td>FC Zegelsem        </td><td>FC Kluisbergen      </td><td>B3</td><td>5 - 2</td></tr>
-                    <tr><td>12u00</td><td>FF                 </td><td>Eendracht EG        </td><td>B4</td><td>&nbsp;</td></tr>
-                </tbody>
-            </table>
-            <a name="U7result">&nbsp;</a>
-            <table>
-                <thead>
-                    <tr><td>Resultaten reeks U7 A</td><td>W1</td><td>W2</td><td>W3</td><td>Totaal</td></tr>
-                </thead>
-                <tbody>
-                    <tr><td>FC Zegelsem     </td><td>0</td><td>/</td><td>0</td><td>0</td></tr>
-                    <tr><td>SK Munkzwalm    </td><td>3</td><td>0</td><td>/</td><td>3</td></tr>
-                    <tr><td>Olsa Brakel     </td><td>/</td><td>3</td><td>3</td><td>6</td></tr>
-                </tbody>
-            </table>
-            <table>
-                <thead>
-                    <tr><td>Resultaten reeks U7 B</td><td>W1</td><td>W2</td><td>W3</td><td>Totaal</td></tr>
-                </thead>
-                <tbody>
-                    <tr><td>Eendracht EG    </td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
-                    <tr><td>KFC Gavere-Asper</td><td>3</td><td>3</td><td>3</td><td>9</td></tr>
-                    <tr><td>KVV Windeke     </td><td>3</td><td>3</td><td>0</td><td>6</td></tr>
-                    <tr><td>FC Kluisbergen  </td><td>0</td><td>0</td><td>3</td><td>3</td></tr>
-                </tbody>
-            </table>
-            <table>
-                <thead>
-                    <tr>
-                        <td colspan=5>Eindresultaten U7</td>
-                    </tr>
-                    <tr>
-                        <td>Uur</td>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                        <td>Terrein</td>
-                        <td>Resultaat</td>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr><td>12u00</td><td>Olsa Brakel        </td><td>KFC Gavere-Asper    </td><td>B1</td><td>1 - 2</td></tr>
-                    <tr><td>12u00</td><td>SK Munkzwalm       </td><td>KVV Windeke         </td><td>B2</td><td>4 - 2</td></tr>
-                    <tr><td>12u00</td><td>FC Zegelsem        </td><td>FC Kluisbergen      </td><td>B3</td><td>5 - 2</td></tr>
-                    <tr><td>12u00</td><td>FF                 </td><td>Eendracht EG        </td><td>B4</td><td>&nbsp;</td></tr>
-                </tbody>
-            </table>
+            <textarea class="markdown" data-target-id="U7-js">
+
+Uur| | | Terrein | Score
+---:|---|---|---|---:
+8u30| KVV Windeke| KVVE Massemen| K5| ?
+.| KRC Bambrugge| KWIK Eine| K6| ?
+9u00| SK Munkzwalm| KFC Gave Asper| K1| ?
+.| KSVS |VV Volkegem| K2| ?
+.| KVVE Massemen |KRC Bambrugge| K3| ?
+.| KWIK Eine |EEG| K4| ?
+9u30| SK Munkzwalm |KSVS| K5| ?
+.| KFC Gavere Asper| VV Volkegem| K6| ?
+10u00| KVV Windeke |KRC Bambrugge| K5| ?
+.| KVVE Massemen| EEG |K6| ?
+10u30| SK Munkzwalm |VV Volkegem| K1| ?
+.| KFC Gavere Asper |KSVS| K2| ?
+.| KVV Windeke |KWIK Eine| K3| ?
+.| KRC Bambrugge |EEG| K4| ?
+11u00| KVV Windeke |EEG |K5| ?
+.| KVVE Massemen | KWIK Eine| K6 | ?
+
+
+<a name="U7result">&nbsp;</a>
+
+Resultaten reeks U7 A|W1|W2|W3|Totaal
+---|---|---|---|---:
+KVV Windeke  |?|?|?|0
+KVVE Massemen|?|?|?|0
+KRC Bambrugge|?|?|?|0
+KWIK Eine    |?|?|?|0
+EEG          |?|?|?|0
+
+Resultaten reeks U7 B|W1|W2|W3|Totaal
+---|---|---|---|---:
+SK Munkzwalm    |?|?|?|0
+KFC Gavere Asper|?|?|?|0
+KSVS            |?|?|?|0
+VV Volkegem     |?|?|?|0
+
+## Finale U7
+
+Uur| | | Terrein | Score
+---:|---|---|---|---:
+11u30|1 reeks A|1 reeks B|K1|?
+.|2 reeks A|2 reeks B|K2|?
+.|3 reeks A|3 reeks B|K3|?
+.|4 reeks A|4 reeks B|K4|?
+            </textarea>
+            <div id="U7-js"></div>
         </article>
         <!-- End U7 -->
         <!-- U8 -->
         <article>
             <a name="U8">&nbsp;</a>
             <h1>U8<small> - <a href="#U8result">Toon resultaat</a></small></h1>
-            <table>
-                <thead>
-                    <tr>
-                        <td>Uur</td>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                        <td>Terrein</td>
-                        <td>Resultaat</td>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr><td>9u00</td><td>VCE Deftinge   </td><td>FC Bonanza       </td><td>A1</td><td>4 - 2</td></tr>
-                    <tr><td>9u00</td><td>KVE Aalter     </td><td>Eendracht EG          </td><td>A2</td><td>3 - 5</td></tr>
-                    <tr><td>9u00</td><td>Olsa Brakel    </td><td>KVVE Massemen   </td><td>A3</td><td>6 - 0</td></tr>
-                    <tr><td>9u00</td><td>E. Hekelgem    </td><td>KFC Bambrugge     </td><td>A4</td><td>4 - 4</td></tr>
-                    <tr><td colspan="5"><hr /></td></tr>
-                    <tr><td>10u00</td><td>VCE Deftinge      </td><td>KVE Aalter         </td><td>A1</td><td>0 - 3</td></tr>
-                    <tr><td>10u00</td><td>FC Bonanza        </td><td>Eendracht EG       </td><td>A2</td><td>2 - 5</td></tr>
-                    <tr><td>10u00</td><td>Olsa Brakel       </td><td>E. Hekelgem        </td><td>A3</td><td>4 - 6</td></tr>
-                    <tr><td>10u00</td><td>KVVE Massemen     </td><td>KFC Bambrugge      </td><td>A4</td><td>2 - 3</td></tr>
-                    <tr><td colspan="5"><hr /></td></tr>
-                    <tr><td>11u00</td><td>VCE Deftinge      </td><td>Eendracht EG       </td><td>A1</td><td>8 - 0</td></tr>
-                    <tr><td>11u00</td><td>FC Bonanza        </td><td>KVE Aalter         </td><td>A2</td><td>0 - 6</td></tr>
-                    <tr><td>11u00</td><td>Olsa Brakel       </td><td>KFC Bambrugge      </td><td>A3</td><td>4 - 1</td></tr>
-                    <tr><td>11u00</td><td>KVVE Massemen     </td><td>E. Hekelgem        </td><td>A4</td><td>1 - 7</td></tr>
-                    <tr><td colspan="5"><hr /></td></tr>
-                    <tr><td colspan="5">Finale</td></tr>
-                    <tr><td>12u00</td><td>KVE Aalter         </td><td>E. Hekelgem         </td><td>A1</td><td>3 - 2</td></tr>
-                    <tr><td>12u00</td><td>VCE Deftinge       </td><td>Olsa Brakel         </td><td>A2</td><td>1 - 2</td></tr>
-                    <tr><td>12u00</td><td>Eendracht EG       </td><td>KFC Bambrugge       </td><td>A3</td><td>3 - 4</td></tr>
-                    <tr><td>12u00</td><td>FC Bonanza         </td><td>KVVE Massemen       </td><td>A4</td><td>2 - 0</td></tr>
-                </tbody>
-            </table>
-            <a name="U8result">&nbsp;</a>
-            <table>
-                <thead>
-                    <tr><td>Resultaten reeks U8 A</td><td>W1</td><td>W2</td><td>W3</td><td>Totaal</td></tr>
-                </thead>
-                <tbody>
-                    <tr><td>VCE Deftinge  </td><td>3</td><td>0</td><td>3</td><td>6</td></tr>
-                    <tr><td>FC Bonanza    </td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
-                    <tr><td>KVE Aalter    </td><td>0</td><td>3</td><td>3</td><td>6</td></tr>
-                    <tr><td>Eendracht EG  </td><td>3</td><td>3</td><td>0</td><td>6</td></tr>
-                </tbody>
-            </table>
-            <p>KVE Aalter - VCE Deftinge - beslist met strafschoppen: 2 - 1</p>
-            <table>
-                <thead>
-                    <tr><td>Resultaten reeks U8 B</td><td>W1</td><td>W2</td><td>W3</td><td>Totaal</td></tr>
-                </thead>
-                <tbody>
-                    <tr><td>Olsa Brakel  </td><td>3</td><td>0</td><td>3</td><td>6</td></tr>
-                    <tr><td>KVVE Massemen</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
-                    <tr><td>E. Hekelgem  </td><td>1</td><td>3</td><td>3</td><td>7</td></tr>
-                    <tr><td>KFC Bambrugge</td><td>1</td><td>3</td><td>0</td><td>4</td></tr>
-                </tbody>
-            </table>
-            <table>
-                <thead>
-                    <tr>
-                        <td colspan=5>Eindresultaten U8</td>
-                    </tr>
-                    <tr>
-                        <td>Uur</td>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                        <td>Terrein</td>
-                        <td>Resultaat</td>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr><td>12u00</td><td>KVE Aalter         </td><td>E. Hekelgem         </td><td>A1</td><td>3 - 2</td></tr>
-                    <tr><td>12u00</td><td>VCE Deftinge       </td><td>Olsa Brakel         </td><td>A2</td><td>1 - 2</td></tr>
-                    <tr><td>12u00</td><td>Eendracht EG       </td><td>KFC Bambrugge       </td><td>A3</td><td>3 - 4</td></tr>
-                    <tr><td>12u00</td><td>FC Bonanza         </td><td>KVVE Massemen       </td><td>A4</td><td>2 - 0</td></tr>
-                </tbody>
-            </table>
+            <textarea class="markdown" data-target-id="U8-js">
+
+Uur| | | Terrein | Score
+---:|---|---|---|---:
+9u00| Kluisbergen Sp.| KSVS A |A1|?
+.| KSVS B |VC Zwijnaarde |A2|?
+9u45| KSVS A |KSVS B |A1|?
+.| VC Zwijnaarde |EEG | A2| ?
+10u30| Kluisbergen Sp. | KSVS B | A1|?
+.| KSVS A | EEG | A2 | ?
+11u15| Kluisbergen Sp. |VC Zwijnaarde| A1 | ?
+.| KSVS B | EEG| A2| ?
+12u00| Kluisbergen Sp. |EEG |A1 | ?
+.| KSVS A |VC Zwijnaarde| A2 | ?
+
+<a name="U8result">&nbsp;</a>
+
+Resultaten reeks U8 | W1|W2|W3|W4|Totaal
+---|---|---|---|---|---:
+Kluisbergen Sportief|?|?|?|?|0
+KSVS A              |?|?|?|?|0
+KSVS B              |?|?|?|?|0
+VC Zwijnaarde       |?|?|?|?|0
+EEG                 |?|?|?|?|0
+            </textarea>
+            <div id="U8-js"><div>
+ 
         </article>
         <!-- End U8 -->
         <!-- U9 -->
         <article>
             <a name="U9">&nbsp;</a>
             <h1>U9<small> - <a href="#U9result">Toon resultaat</a></small></h1>
-            <table>
-                <thead>
-                    <tr>
-                        <td>Uur</td>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                        <td>Terrein</td>
-                        <td>Resultaat</td>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr><td>9u30</td><td>EC Oudenhove      </td><td>KVV Ardennen     </td><td>A1</td><td>2 - 8</td></tr>
-                    <tr><td>9u30</td><td>KVVE  Massemen    </td><td>Eendracht EG     </td><td>A2</td><td>1 - 6</td></tr>
-                    <tr><td colspan="5"><hr /></td></tr>
-                    <tr><td>10u30</td><td>EC Oudenhove     </td><td>Olsa Brakel      </td><td>A1</td><td>1 - 12</td></tr>
-                    <tr><td>10u30</td><td>KVVE  Massemen   </td><td>VV Volkegem      </td><td>A2</td><td>7 - 2</td></tr>
-                    <tr><td colspan="5"><hr /></td></tr>
-                    <tr><td>11u30</td><td>KVV Ardennen     </td><td>Olsa Brakel      </td><td>A1</td><td>1 - 9</td></tr>
-                    <tr><td>11u30</td><td>Eendracht EG     </td><td>VV Volkegem      </td><td>A2</td><td>10 - 1</td></tr>
-                    <tr><td colspan="5"><hr /></td></tr>
-                    <tr><td colspan="5">Finale</td></tr>
-                    <tr><td>12u30</td><td>Olsa Brakel   </td><td>Eendracht EG     </td><td>A1</td><td>8 - 3</td></tr>
-                    <tr><td>12u30</td><td>KVV Ardennen  </td><td>KVVE Massemen    </td><td>A2</td><td>5 - 5 (0 - 2)</td></tr>
-                    <tr><td>12u30</td><td>EC Oudenhove  </td><td>VV Volkegem      </td><td>A3</td><td>3 - 3 (1 - 0)</td></tr>
-                </tbody>
-            </table>
-            <a name="U9result">&nbsp;</a>
-            <table>
-                <thead>
-                    <tr><td>Resultaten reeks U9 A</td><td>W1</td><td>W2</td><td>W3</td><td>Totaal</td></tr>
-                </thead>
-                <tbody>
-                    <tr><td>EC Oudenhove    </td><td>0</td><td>0</td><td>/</td><td>0</td></tr>
-                    <tr><td>KVV Ardennen    </td><td>3</td><td>/</td><td>0</td><td>3</td></tr>
-                    <tr><td>Olsa Brakel     </td><td>/</td><td>3</td><td>3</td><td>6</td></tr>
-                </tbody>
-            </table>
-            <table>
-                <thead>
-                    <tr><td>Resultaten reeks U9 B</td><td>W1</td><td>W2</td><td>W3</td><td>Totaal</td></tr>
-                </thead>
-                <tbody>
-                    <tr><td>KVVE Massemen   </td><td>0</td><td>3</td><td>/</td><td>3</td></tr>
-                    <tr><td>Eendracht EG    </td><td>3</td><td>/</td><td>3</td><td>6</td></tr>
-                    <tr><td>VV Volkegem     </td><td>/</td><td>0</td><td>0</td><td>0</td></tr>
-                </tbody>
-            </table>
-            <table>
-                <thead>
-                    <tr>
-                        <td colspan=5>Eindresultaten U9</td>
-                    </tr>
-                    <tr>
-                        <td>Uur</td>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                        <td>Terrein</td>
-                        <td>Resultaat</td>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr><td>12u30</td><td>Olsa Brakel   </td><td>Eendracht EG     </td><td>A1</td><td>8 - 3</td></tr>
-                    <tr><td>12u30</td><td>KVV Ardennen  </td><td>KVVE Massemen    </td><td>A2</td><td>5 - 5 (0 - 2)</td></tr>
-                    <tr><td>12u30</td><td>EC Oudenhove  </td><td>VV Volkegem      </td><td>A3</td><td>3 - 3 (1 - 0)</td></tr>
-                </tbody>
-            </table>
+
+            <textarea class="markdown" data-target-id="U9-js">
+
+Uur| | | Terrein | Score
+---:|---|---|---|---:
+8u30| FC Latem| EC Oudenhove| K1|?
+.| Sp. Borgerhout |St. Michelbeke| K2|?
+.| KVVE Massemen |FC Galmaarden| K3|?
+.| KVVV Ardennen| KVV Windeke |K4|?
+9u00| St. Michelbeke |E. Hekelgem |K5|?
+.| EC Oudenhove| Sp. Borgerhout |K6|?
+9u30| EC Oudenhove|E. Hekelgem| K1|?
+.| LC Latem Sp| Borgerhout| K2|?
+.| FC Galmaarden |KVVV Ardennen|K3|?
+.| KVV Windeke |EEG| K4|?
+10u00| FC Latem |St. Michelbeke| K1|?
+.| Sp. Borgerhout |E. Hekelgem |K2 |?
+.| KVVE Massemen | KVVV Ardennen |K3|?
+.| FC Galmaarden | EEG |K4|?
+10u30| KVVE Massemen  |KVV Windeke | K5|?
+.| KVVV Ardennen | EEG | K6|?
+11u00| EC Oudenhove  |St. Michelbeke | K1|?
+.| FC Latem | E. Hekelgem  |K2|?
+.| KVVE Massemen  |EEG | K3|?
+.| FC Galmaarden | KVV Windeke | K4|?
+
+<a name="U9result">&nbsp;</a>
+
+Resultaten reeks U9 A|W1|W2|W3|W4|Totaal
+---|---|---|---|---|---:
+FC Latem |?|?|?|?|0
+EC Oudenhove |?|?|?|?|0
+Sp. Borgerhout |?|?|?|?|0
+St. Michelbeke |?|?|?|?|0
+E. Hekelgem |?|?|?|?|0
+
+Resultaten reeks U9 B|W1|W2|W3|W4|Totaal
+---|---|---|---|---|---:
+KVVE Massemen|?|?|?|?|0
+FC Galmaarden|?|?|?|?|0
+KVVV Ardennen|?|?|?|?|0
+KVV Windeke|?|?|?|?|0
+EEG |?|?|?|?|0
+
+## Finale U9
+
+Uur| | | Terrein | Score
+---:|---|---|---|---:
+12u00| 1 reeks A | 1 reeks B  |K1|?
+.| 2 reeks A  |2 reeks B | K2|?
+.| 3 reeks A  |3 reeks B | K3|?
+.| 4 reeks A  |4 reeks B | K4|?
+.| 5 reeks A | 5 reeks B  |K5 |?
+            </textarea>
+            <div id="U9-js"></div>
+
         </article>
         <!-- End U9 -->
+        <!-- U10 -->
+        <article>
+            <a name="U10">&nbsp;</a>
+            <h1>U10<small> - <a href="#U10result">Toon resultaat</a></small></h1>
+            <textarea class="markdown" data-target-id="U10-js">
+
+Uur| | | Terrein | Score
+---:|---|---|---|---:
+13u30 | EC Oudenhove | SV Voorde | K1 |?
+.| FC Mere | Sp. Borgerhout  |K2 |?
+.| SK Munkzwalm | KSK Ronse | K3 |?
+14u00 |VK Ninove  |FC Zegelsem | K1 |?
+.| EC Oudenhove  |VV Volkegem  |K2 |?
+.| FC Mere  |VC Deftinge | K3 |?
+14u30 |SK Munkzwalm | EEG A  |K1 |?
+.| VK Ninove  |EEG B  |K2 |?
+.| SV Voorde  |VV Volkegem  |K3 |?
+15u00  |Sp. Borgerhout | VCE Deftinge  |K1 |?
+.| KSK Ronse | EEG A | K2 |?
+.| FC Zegelsem | EEG B  |K3  |?
+
+<a name="U10result">&nbsp;</a>
+
+Resultaten reeks U10 | W1|W2|W3|W4|Totaal
+---|---|---|---|---|---:
+Kluisbergen Sportief|?|?|?|?|0
+KSVS A              |?|?|?|?|0
+KSVS B              |?|?|?|?|0
+VC Zwijnaarde       |?|?|?|?|0
+EEG                 |?|?|?|?|0
+
+## Finale U10
+
+Uur| | | Terrein | Score| .
+---:|---|---|---|---:|---
+15u30| 3de reeks A| 3de reeks B| K1| ?| A
+.| 3de reeks C| 3de reeks D| K2 | ?| B
+16u00 |2de reeks A| 2de reeks B| K1 | ?| C
+.| 2de reeks C| 2de reeks D |K2 | ?| D
+16u30| 1ste reeks A| 1ste reeks B |K1 | ?| E
+.| 1ste reeks C| 1ste reeks A| K2 | ?| F
+17u00| Verliezer A| Verliezer B| K1|?|.
+.| Winnaar A |Winnaar B |K2|?|.
+17u30| Verliezer C |Verliezer D| K1|?|.
+.| Winnaar C |Winnaar D| K2|?|.
+18u00| Verliezer E |Verliezer F| K1|?|.
+.| Winnaar E| Winnaar F |K2 |?|.
+            </textarea>
+            <div id="U10-js"><div>
+ 
+        </article>
+        <!-- End U10 -->
         <!-- U11 -->
         <article>
             <a name="U11">&nbsp;</a>
             <h1>U11<small> - <a href="#U11result">Toon resultaat</a></small></h1>
-            <table>
-                <thead>
-                    <tr>
-                        <td>Uur</td>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                        <td>Terrein</td>
-                        <td>Resultaat</td>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr><td>13u30</td><td>WK Boekel       </td><td>Eendracht EG       </td><td>B2</td><td>1 - 3</td></tr>
-                    <tr><td colspan="5"><hr /></td></tr>
-                    <tr><td>15u00</td><td>FCV Dender EH   </td><td>WK Boekel          </td><td>B1</td><td>7 - 0</td></tr>
-                    <tr><td>15u00</td><td>Eendracht EG    </td><td>KE Appelterre      </td><td>B2</td><td>5 - 0</td></tr>
-                    <tr><td colspan="5"><hr /></td></tr>
-                    <tr><td>16u30</td><td>FCV Dender EH  </td><td>KE Appelterre      </td><td>B1</td><td>2 - 0</td></tr>
-                    <tr><td colspan="5"><hr /></td></tr>
-                    <tr><td>17u15</td><td>FCV Dender EH  </td><td>Eendracht EG        </td><td>B1</td><td>2 - 1</td></tr>
-                    <tr><td>17u15</td><td>WK Boekel       </td><td>KE Appelterre      </td><td>B2</td><td>5 - 0</td></tr>
-                </tbody>
-            </table>
-            <a name="U11result">&nbsp;</a>
-            <table>
-                <thead>
-                    <tr><td>Resultaten reeks U11</td><td>W1</td><td>W2</td><td>W3</td><td>W4</td><td>Totaal</td></tr>
-                </thead>
-                <tbody>
-                    <tr><td>FCV Dender      </td><td>/</td><td>3</td><td>3</td><td>3</td><td>9</td></tr>
-                    <tr><td>WK Boekel       </td><td>0</td><td>0</td><td>/</td><td>3</td><td>3</td></tr>
-                    <tr><td>Eendracht EG    </td><td>3</td><td>3</td><td>/</td><td>0</td><td>6</td></tr>
-                    <tr><td>KE Appelterre   </td><td>/</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
-                </tbody>
-            </table>
+            <textarea class="markdown" data-target-id="U11-js">
+
+Uur| | | Terrein | Score
+---:|---|---|---|---:
+8U30| KSK Ronse |SV Z-Waregem |A3|?
+9u00 |St.Michelbeke |ESA Bottelare| A3|?
+9u30 |KSK Ronse| VCE Deftinge| A3|?
+10u00| St.Michelbeke |EEG| A3|?
+10u30| SV Z-Waregem| VCE Deftinge |A3|?
+11u00| ESA Bottelare| EEG| A3|?
+
+<a name="U11result">&nbsp;</a>
+
+Resultaten reeks U11 A | W1|W2|Totaal
+---|---|---|---|---|---:
+KSK Ronse|?|?|0
+SV Z-Waregem|?|?|0
+VCE Deftinge|?|?|0
+
+Resultaten reeks U11 B | W1|W2|Totaal
+---|---|---|---|---|---:
+St. Michelbeke |?|?|0
+ESA Bottelare |?|?|0
+EEG|?|?|0
+
+
+## Finale U11
+
+Uur| | | Terrein | Score
+---:|---|---|---|---:
+11u30| 3 reeks A |3 reeks B| A3|?
+12u00 |2 reeks A |2 reeks B |A3|?
+12u30| 1 reeks A |1 reeks B |A3 |?
+
+
+
+            </textarea>
+            <div id="U11-js"><div>
+ 
+        </article>
+        <!-- End U8 -->
         </article>
         <!-- End U11 -->
         <!-- U12 -->
         <article>
             <a name="U12">&nbsp;</a>
             <h1>U12<small> - <a href="#U12result">Toon resultaat</a></small></h1>
-            <table>
-                <thead>
-                    <tr>
-                        <td>Uur</td>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                        <td>Terrein</td>
-                        <td>Resultaat</td>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr><td>14u00</td><td>FC Zegelsem    </td><td>KVVV Ardennen   </td><td>A1</td><td>1 - 0</td></tr>
-                    <tr><td>14u00</td><td>E Hekelgem     </td><td>VK Ninove       </td><td>A2</td><td>3 - 1</td></tr>
-                    <tr><td>14u00</td><td>Eendracht EG   </td><td>VV Horebeke     </td><td>C1</td><td>1 - 2</td></tr>
-                    <tr><td colspan="5"><hr /></td></tr>
-                    <tr><td>15u00</td><td>FC Zegelsem     </td><td>E Hekelgem     </td><td>A1</td><td>0 - 1</td></tr>
-                    <tr><td>15u00</td><td>KVVV Ardennen   </td><td>VK Ninove      </td><td>A2</td><td>0 - 1</td></tr>
-                    <tr><td>15u00</td><td>VV Horebeke     </td><td>SC Dikkelvenne </td><td>C1</td><td>0 - 2</td></tr>
-                    <tr><td colspan="5"><hr /></td></tr>
-                    <tr><td>16u00</td><td>FC Zegelsem     </td><td>VK Ninove      </td><td>A1</td><td>1 - 2</td></tr>
-                    <tr><td>16u00</td><td>KVVV Ardennen   </td><td>E Hekelgem     </td><td>A2</td><td>0 - 7</td></tr>
-                    <tr><td>16u00</td><td>Eendracht EG    </td><td>SC Dikkelvenne </td><td>C1</td><td>2 - 4</td></tr>
-                    <tr><td colspan="5"><hr /></td></tr>
-                    <tr><td colspan="5">Finale</td></tr>
-                    <tr><td>17u00</td><td>E Hekelgem  </td><td>SC Dikkelvenne   </td><td>A1</td><td>3 - 2</td></tr>
-                    <tr><td>17u00</td><td>VK Ninove   </td><td>VV Horebeke      </td><td>A2</td><td>2 - 1</td></tr>
-                    <tr><td>17u00</td><td>FC Zegelsem </td><td>Eendracht EG     </td><td>C1</td><td>0 - 3</td></tr>
-                    <tr><td>&nbsp;</td><td colspan="2">VK Ninove =Zevende plaats </td><td>&nbsp;</td><td>&nbsp;</td></tr>
-                </tbody>
-            </table>
-            <a name="U12result">&nbsp;</a>
-            <table>
-                <thead>
-                    <tr><td>Resultaten reeks U12 A</td><td>W1</td><td>W2</td><td>W3</td><td>Totaal</td></tr>
-                </thead>
-                <tbody>
-                    <tr><td>FC Zegelsem   </td><td>3</td><td>0</td><td>0</td><td>3</td></tr>
-                    <tr><td>KVVV Ardennen </td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
-                    <tr><td>E Hekelgem    </td><td>3</td><td>3</td><td>3</td><td>9</td></tr>
-                    <tr><td>VK Ninove     </td><td>0</td><td>3</td><td>3</td><td>6</td></tr>
-                </tbody>
-            </table>
-            <table>
-                <thead>
-                    <tr><td>Resultaten reeks U12 B</td><td>W1</td><td>W2</td><td>W3</td><td>Totaal</td></tr>
-                </thead>
-                <tbody>
-                    <tr><td>Eendracht EG    </td><td>0</td><td>/</td><td>0</td><td>0</td></tr>
-                    <tr><td>VV Horebeke     </td><td>3</td><td>0</td><td>/</td><td>3</td></tr>
-                    <tr><td>SC Dikkelvenne  </td><td>/</td><td>3</td><td>3</td><td>6</td></tr>
-                </tbody>
-            </table>
-            <table>
-                <thead>
-                    <tr>
-                        <td colspan=5>Eindresultaten U12</td>
-                    </tr>
-                    <tr>
-                        <td>Uur</td>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                        <td>Terrein</td>
-                        <td>Resultaat</td>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr><td>17u00</td><td>E Hekelgem  </td><td>SC Dikkelvenne   </td><td>A1</td><td>3 - 2</td></tr>
-                    <tr><td>17u00</td><td>VK Ninove   </td><td>VV Horebeke      </td><td>A2</td><td>2 - 1</td></tr>
-                    <tr><td>17u00</td><td>FC Zegelsem </td><td>Eendracht EG     </td><td>C1</td><td>0 - 3</td></tr>
-                    <tr><td>&nbsp;</td><td colspan="2">VK Ninove =Zevende plaats </td><td>&nbsp;</td><td>&nbsp;</td></tr>
-                </tbody>
-            </table>
+          <textarea class="markdown" data-target-id="U12-js">
+
+Uur| | | Terrein | Score
+---:|---|---|---|---:
+13u30 | KVV Windeke  | FC Bonanza  | A1 | ?
+. |  SV Z-Waregem  | FC Kerksken  | A2| ?
+14u30  | FC Bonanza  | FC Z-Waregem |  A1| ?
+. |  FC Kerksken |  EEG |  A2| ?
+15u30 |  KVV Windeke  | SV Z-Waregem |  A1| ?
+. |  FC Bonanza |  EEG |  A2| ?
+16u30 |  KVV Windeke |  FC Kerksken |  A1| ?
+. |  SV Z-Waregem | EEG |  A2| ?
+17u30 |  KVV Windeke |  EEG |  A1| ?
+. |  FC Bonanza  | FC Kerksken |  A2 | ?
+
+<a name="U12result">&nbsp;</a>
+
+Resultaten reeks U12 | W1|W2|W3|W4|Totaal
+---|---|---|---|---|---:
+KVV Windeke         |?|?|?|?|0
+FC Bonanza          |?|?|?|?|0
+SV Zulte Waregem    |?|?|?|?|0
+FC Kerksken         |?|?|?|?|0
+EEG                 |?|?|?|?|0
+            </textarea>
+            <div id="U12-js"><div>
         </article>
         <!-- End U12 -->
         <!-- U13 -->
         <article>
             <a name="U13">&nbsp;</a>
             <h1>U13<small> - <a href="#U13result">Toon resultaat</a></small></h1>
-            <table>
-                <thead>
-                    <tr>
-                        <td>Uur</td>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                        <td>Terrein</td>
-                        <td>Resultaat</td>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr><td>14u00</td><td>ESA Bottelare   </td><td>Eendracht EG      </td><td>B1</td><td>4 - 2</td></tr>
-                    <tr><td colspan="5"><hr /></td></tr>
-                    <tr><td>15u30</td><td>KSV Zottegem  </td><td>ESA Bottelare       </td><td>B1</td><td>8 - 0</td></tr>
-                    <tr><td colspan="5"><hr /></td></tr>
-                    <tr><td>17u00</td><td>Eendracht EG    </td><td>KSV Zottegem       </td><td>C</td><td>1 - 6</td></tr>
-                </tbody>
-            </table>
-            <a name="U13result">&nbsp;</a>
-            <table>
-                <thead>
-                    <tr><td>Resultaten reeks U13</td><td>W1</td><td>W2</td><td>W3</td><td>Totaal</td></tr>
-                </thead>
-                <tbody>
-                    <tr><td>ESA Bottelare </td><td>3</td><td>0</td><td>/</td><td>3</td></tr>
-                    <tr><td>KSV Zottegem  </td><td>/</td><td>3</td><td>3</td><td>6</td></tr>
-                    <tr><td>Eendracht EG  </td><td>0</td><td>/</td><td>0</td><td>0</td></tr>
-                </tbody>
-            </table>
+          <textarea class="markdown" data-target-id="U13-js">
+
+Uur| | | Terrein | Score
+---:|---|---|---|---:
+14u00| FC Zegelsem |R Waregem| A1|?
+14u00 |KSV G-M |SK Vlierzele |A2|?
+15u00| R Waregem |KSV G-M |A1|?
+15u00 |SK Vlierzele |EEG |A2|?
+16u00| FC Zegelsem| KSV G-M |A1|?
+16u00| R Waregem |EEG| A2|?
+17u00| FC Zegelsem |SK Vlierzele |A1|?
+17u00| KSV G-M |EEG |A2|?
+18u00| FC Zegelsem |EEG |A1|?
+18u00 |R Waregem |SK Vlierzele |A2 |?
+
+<a name="U13result">&nbsp;</a>
+
+Resultaten reeks U13 | W1|W2|W3|W4|Totaal
+---|---|---|---|---|---:
+FC Zegelsem        |?|?|?|?|0
+Racing Waregem        |?|?|?|?|0
+KSV Geraardsbergen-Moerbeke    |?|?|?|?|0
+SK Vlierzele        |?|?|?|?|0
+EEG        |?|?|?|?|0
+
+            </textarea>
+            <div id="U13-js"><div>
         </article>
         <!-- End U13 -->
         <article>
             <h2>Fotos</h2>
-            <p>
-                Indien dit niet werkt kan u de fotos <a href="https://picasaweb.google.com/100168921137497905474/ToernooiGertDuprez2014?authuser=0&feat=directlink"> hier</a> terug vinden.
-            </p>
-            <embed class="ifflash" type="application/x-shockwave-flash" src="https://photos.gstatic.com/media/slideshow.swf" width="400" height="267" flashvars="host=picasaweb.google.com&captions=1&hl=nl&feat=flashalbum&RGB=0x000000&feed=https%3A%2F%2Fpicasaweb.google.com%2Fdata%2Ffeed%2Fapi%2Fuser%2F100168921137497905474%2Falbumid%2F6047506789529078513%3Falt%3Drss%26kind%3Dphoto%26hl%3Dnl" pluginspage="http://www.macromedia.com/go/getflashplayer"></embed>
-            <a name="fotos">&nbsp;</a>
+<embed type="application/x-shockwave-flash" src="https://photos.gstatic.com/media/slideshow.swf" width="288" height="192" flashvars="host=picasaweb.google.com&hl=nl&feat=flashalbum&RGB=0x000000&feed=https%3A%2F%2Fpicasaweb.google.com%2Fdata%2Ffeed%2Fapi%2Fuser%2F118224462371668777554%2Falbumid%2F6182249576069988017%3Falt%3Drss%26kind%3Dphoto%26hl%3Dnl" pluginspage="http://www.macromedia.com/go/getflashplayer"></embed>
+
+<a name="fotos">&nbsp;</a>
         </article>
     </div>
     <script>
