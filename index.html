@@ -102,7 +102,7 @@
     <script type="text/javascript" src="js/micromarkdown.js"></script>
     <script type="text/javascript">
     
-        String.prototype.trimRight = String.prototype.trimRight || function(s) { return s.replace(/~+$/, ''); };
+        String.prototype.trimRight = String.prototype.trimRight || function() { return this.replace(/~+$/, ''); };
 
         var linksVoormiddag = ["home", "fotos", "U7", "U7result", "fotos", "U8", "U8result", "fotos", "U9", "U9result", "fotos", "U11", "U11result", "fotos"];
         var linksNamiddag   = ["home", "fotos", "U10", "U10result", "U12", "U12result", "fotos", "U13", "U13result", "fotos"];
